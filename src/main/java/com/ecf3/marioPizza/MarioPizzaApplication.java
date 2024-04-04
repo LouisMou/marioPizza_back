@@ -6,7 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MarioPizzaApplication {
 
-	public static void main(String[] args) {
+	/**
+	 *
+	 * @param args
+	 */
+	public static void main(final String[] args) {
 		SpringApplication.run(MarioPizzaApplication.class, args);
 	}
 
