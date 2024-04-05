@@ -161,10 +161,10 @@ public class User {
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param pAddress the address to set
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(final String pAddress) {
+		this.address = pAddress;
 	}
 
 }

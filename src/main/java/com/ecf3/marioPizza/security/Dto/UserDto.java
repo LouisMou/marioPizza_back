@@ -19,7 +19,7 @@ public class UserDto {
 	/** the role of te user. */
 	private String role;
 
-	/** the address of the user */
+	/** the address of the user. */
 	private String address;
 
 	/** Default constructor. */
