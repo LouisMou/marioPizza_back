@@ -13,31 +13,31 @@ public class Pizza {
 	 * unique id of a pizza.
 	 */
 	@Id
-	@Column(name = "piz_id")
+	@Column(name = "id")
 	private Integer id;
 
 	/**
 	 * name of the pizza.
 	 */
-	@Column(name = "piz_name")
+	@Column(name = "name")
 	private String name;
 
 	/**
 	 * description of the ingredients.
 	 */
-	@Column(name = "piz_description")
+	@Column(name = "description")
 	private String description;
 
 	/**
 	 * image of the pizza.
 	 */
-	@Column(name = "piz_image")
+	@Column(name = "image")
 	private String picture;
 
 	/**
 	 * price of the pizza.
 	 */
-	@Column(name = "piz_price")
+	@Column(name = "price")
 	private Integer price;
 
 	/**
