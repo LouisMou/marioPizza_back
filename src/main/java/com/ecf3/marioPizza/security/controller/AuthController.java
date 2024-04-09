@@ -1,27 +1,40 @@
 package com.ecf3.marioPizza.security.controller;
 
+import java.net.URI;
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.ecf3.marioPizza.security.Dto.ApiResponse;
 import com.ecf3.marioPizza.security.Dto.JwtResponse;
 import com.ecf3.marioPizza.security.Dto.LoginRequest;
+import com.ecf3.marioPizza.security.Dto.SignUpRequest;
 import com.ecf3.marioPizza.security.Dto.TokenRefreshRequest;
 import com.ecf3.marioPizza.security.Dto.TokenRefreshResponse;
 import com.ecf3.marioPizza.security.Dto.UserDto;
 import com.ecf3.marioPizza.security.jwt.JwtProvider;
+import com.ecf3.marioPizza.security.jwt.exception.AppException;
 import com.ecf3.marioPizza.security.jwt.exception.TokenRefreshException;
 import com.ecf3.marioPizza.security.models.RefreshToken;
+import com.ecf3.marioPizza.security.models.Role;
+import com.ecf3.marioPizza.security.models.RoleName;
 import com.ecf3.marioPizza.security.models.User;
+import com.ecf3.marioPizza.security.repository.RoleRepository;
+import com.ecf3.marioPizza.security.repository.UserRepository;
 import com.ecf3.marioPizza.security.service.IRefreshTokenService;
 import com.ecf3.marioPizza.security.service.impl.UserDetailsServiceImpl;
 
@@ -48,9 +61,18 @@ public final class AuthController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	@Autowired
+	private UserRepository userRepository;
+
 	/** import jwtprovider. */
 	@Autowired
 	private JwtProvider tokenProvider;
+
+	@Autowired
+	private RoleRepository roleRepository;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	/** import refreshToken service. */
 	@Autowired
@@ -82,6 +104,30 @@ public final class AuthController {
 
 		return ResponseEntity.ok(new JwtResponse(tokenHeader + " " + jwt, tokenProvider.getExpiryDate(jwt),
 				new UserDto(user), refreshToken.getToken()));
+	}
+
+	@PostMapping("/signup")
+	public ResponseEntity<?> registerUser(@Valid @RequestBody final SignUpRequest signUpRequest) {
+		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+			return new ResponseEntity(new ApiResponse(false, "Email Address already in use"), HttpStatus.BAD_REQUEST);
+		}
+
+		User user = new User(signUpRequest.getLastname(), signUpRequest.getFirstname(), signUpRequest.getAddress(),
+				signUpRequest.getUsername(), signUpRequest.getPassword());
+
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		Role userRole = roleRepository.findByName(RoleName.USER)
+				.orElseThrow(() -> new AppException("User Role not set"));
+
+		user.setRoles(Collections.singleton(userRole));
+
+		User result = userRepository.save(user);
+
+		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/{username}")
+				.buildAndExpand(result.getUsername()).toUri();
+
+		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
 	}
 
 	/**
