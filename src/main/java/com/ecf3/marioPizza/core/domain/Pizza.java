@@ -1,5 +1,7 @@
 package com.ecf3.marioPizza.core.domain;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -38,7 +40,7 @@ public class Pizza {
 	 * price of the pizza.
 	 */
 	@Column(name = "price")
-	private Integer price;
+	private BigDecimal price;
 
 	/**
 	 * @return the id
@@ -99,14 +101,14 @@ public class Pizza {
 	/**
 	 * @return the price
 	 */
-	public Integer getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
 	/**
 	 * @param pPrice the price to set
 	 */
-	public void setPrice(final Integer pPrice) {
+	public void setPrice(final BigDecimal pPrice) {
 		this.price = pPrice;
 	}
 

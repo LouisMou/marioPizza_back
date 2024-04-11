@@ -3,6 +3,8 @@
  */
 package com.ecf3.marioPizza.core.dto;
 
+import java.math.BigDecimal;
+
 /**
  *
  */
@@ -31,7 +33,7 @@ public class PizzaDTO {
 	/**
 	 * pizzaDTO price.
 	 */
-	private Integer price;
+	private BigDecimal price;
 
 	/**
 	 * @return the id
@@ -92,14 +94,14 @@ public class PizzaDTO {
 	/**
 	 * @return the price
 	 */
-	public Integer getPrice() {
+	public BigDecimal getPrice() {
 		return price;
 	}
 
 	/**
 	 * @param pPrice the price to set
 	 */
-	public void setPrice(final Integer pPrice) {
+	public void setPrice(final BigDecimal pPrice) {
 		this.price = pPrice;
 	}
 
