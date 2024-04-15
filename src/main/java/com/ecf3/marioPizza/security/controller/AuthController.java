@@ -61,16 +61,23 @@ public final class AuthController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
+	/**
+	 * link.
+	 */
 	@Autowired
 	private UserRepository userRepository;
 
 	/** import jwtprovider. */
 	@Autowired
 	private JwtProvider tokenProvider;
-
+	/**
+	 * link.
+	 */
 	@Autowired
 	private RoleRepository roleRepository;
-
+	/**
+	 * link.
+	 */
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
@@ -106,6 +113,12 @@ public final class AuthController {
 				new UserDto(user), refreshToken.getToken()));
 	}
 
+	/**
+	 * method to signup.
+	 *
+	 * @param signUpRequest
+	 * @return the freshly created user.
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody final SignUpRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {

@@ -1,21 +1,37 @@
 /**
- * 
+ *
  */
 package com.ecf3.marioPizza.security.Dto;
 
 /**
- * 
+ *
  */
 public class SignUpRequest {
 
+	/**
+	 * lastname.
+	 */
 	private String lastname;
+
+	/**
+	 * firstname.
+	 */
 
 	private String firstname;
 
+	/**
+	 * pwd.
+	 */
 	private String password;
 
+	/**
+	 * address.
+	 */
 	private String address;
 
+	/**
+	 * username.
+	 */
 	private String username;
 
 	/**
@@ -26,10 +42,10 @@ public class SignUpRequest {
 	}
 
 	/**
-	 * @param lastname the lastname to set
+	 * @param pLastname the lastname to set
 	 */
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastname(final String pLastname) {
+		this.lastname = pLastname;
 	}
 
 	/**
@@ -40,10 +56,10 @@ public class SignUpRequest {
 	}
 
 	/**
-	 * @param firstname the firstname to set
+	 * @param pFirstname the firstname to set
 	 */
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstname(final String pFirstname) {
+		this.firstname = pFirstname;
 	}
 
 	/**
@@ -54,10 +70,10 @@ public class SignUpRequest {
 	}
 
 	/**
-	 * @param password the password to set
+	 * @param pPassword the password to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPassword(final String pPassword) {
+		this.password = pPassword;
 	}
 
 	/**
@@ -68,10 +84,10 @@ public class SignUpRequest {
 	}
 
 	/**
-	 * @param address the address to set
+	 * @param pAddress the address to set
 	 */
-	public void setAddress(String address) {
-		this.address = address;
+	public void setAddress(final String pAddress) {
+		this.address = pAddress;
 	}
 
 	/**
@@ -82,10 +98,10 @@ public class SignUpRequest {
 	}
 
 	/**
-	 * @param username the username to set
+	 * @param pUsername the username to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(final String pUsername) {
+		this.username = pUsername;
 	}
 
 }

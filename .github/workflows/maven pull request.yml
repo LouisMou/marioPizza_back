@@ -12,7 +12,6 @@ jobs:
           java-version: "17"
           distribution: "temurin"
           cache: maven
-
       - name: checkstyle with Maven
         run: mvn checkstyle:check
       - uses: lcollins/checkstyle-github-action@v2.0.0

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.ecf3.marioPizza.security.repository;
 
@@ -13,5 +13,10 @@ import com.ecf3.marioPizza.security.models.RoleName;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
+	/**
+	 *
+	 * @param roleName
+	 * @return return thecorrespondif.
+	 */
 	Optional<Role> findByName(RoleName roleName);
 }

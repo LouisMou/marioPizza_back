@@ -45,6 +45,10 @@ public class SecurityConfiguration {
 		return new ProviderManager(authProvider);
 	}
 
+	/**
+	 *
+	 * @return encoded pwd.
+	 */
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
