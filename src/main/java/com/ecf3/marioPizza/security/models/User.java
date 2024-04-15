@@ -69,6 +69,14 @@ public class User {
 		this.address = pAddress;
 	}
 
+	/**
+	 *
+	 * @param pLastname2
+	 * @param pFirstname2
+	 * @param pAddress2
+	 * @param pUsername2
+	 * @param pPassword2
+	 */
 	public User(final String pLastname2, final String pFirstname2, final String pAddress2, final String pUsername2,
 			final String pPassword2) {
 		this.lastname = pLastname2;

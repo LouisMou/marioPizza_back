@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.ecf3.marioPizza.core.domain;
 
@@ -23,23 +23,33 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "`order`") // "order" is a reserved keyword in SQL, so it needs to be escaped
 public class Order {
-
+	/**
+	 * id.
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	/**
+	 * date.
+	 */
 	@Column(name = "date")
 	private Date date;
 
+	/**
+	 * total amount.
+	 */
 	@Column(name = "total_amount")
 	private BigDecimal total;
-
+	/**
+	 *
+	 */
 	@ManyToOne
 	@JoinColumn(name = "usr_id")
 	private User user;
 
 	/**
-	 * 
+	 *
 	 */
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
 	private Set<OrderLine> orderLines;

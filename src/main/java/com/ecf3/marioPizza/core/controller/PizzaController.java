@@ -1,5 +1,4 @@
 /**
- * 
  */
 package com.ecf3.marioPizza.core.controller;
 
@@ -15,22 +14,30 @@ import com.ecf3.marioPizza.core.dto.mapper.PizzaMapper;
 import com.ecf3.marioPizza.core.service.IPizzaService;
 
 /**
- * 
+ *
  */
 @RestController
 @RequestMapping("/mariopizza")
 public class PizzaController {
 
+	/**
+	 * link.
+	 */
 	@Autowired
 	private IPizzaService pizzaService;
 
+	/**
+	 * method to get all the pizzas.
+	 *
+	 * @return the list of pizzas.
+	 */
 	@GetMapping("/")
 	public List<PizzaDTO> getAll() {
 		return PizzaMapper.pizzasToDtos(pizzaService.getAllPizzas());
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public PizzaController() {
 		// TODO Auto-generated constructor stub
