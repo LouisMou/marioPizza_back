@@ -80,7 +80,7 @@
       			<version>3.3.1</version>
       			<configuration>
         			<failsOnError>false</failsOnError>
-        			<configLocation>ci/check.xml</configLocation>
+        			<configLocation>CI/check.xml</configLocation>
       			</configuration>
     		</plugin>
     		<plugin>
