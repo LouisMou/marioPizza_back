@@ -1,10 +1,12 @@
 package com.ecf3.marioPizza.core.domain;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -41,6 +43,26 @@ public class Pizza {
 	 */
 	@Column(name = "price")
 	private BigDecimal price;
+
+	/**
+	 *
+	 */
+	@ManyToMany(mappedBy = "pizza")
+	private List<Order> orders;
+
+	/**
+	 * @return the orders
+	 */
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	/**
+	 * @param orders the orders to set
+	 */
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
 	/**
 	 * @return the id

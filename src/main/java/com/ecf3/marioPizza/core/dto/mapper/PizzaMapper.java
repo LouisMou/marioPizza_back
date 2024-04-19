@@ -9,10 +9,10 @@ import com.ecf3.marioPizza.core.dto.PizzaDTO;
 public class PizzaMapper {
 
 	/**
-	 * Create a Pokemon from a PokemonDTO.
+	 * Create a Pizza from a PizzaDTO.
 	 *
 	 * @param dto the dto used as a source
-	 * @return a Pokemon filled with datas from dto
+	 * @return a Pizza filled with datas from dto
 	 */
 	public static Pizza dtoToEntity(final PizzaDTO dto) {
 		Pizza entity = null;
@@ -32,7 +32,7 @@ public class PizzaMapper {
 	/**
 	 *
 	 * @param pizza a Pizza
-	 * @return the Pokemon turned into its sibling PokemonDTO
+	 * @return the Pizza turned into its sibling PizzaDTO
 	 */
 	public static PizzaDTO pizzaToDto(final Pizza pizza) {
 		PizzaDTO dto = null;

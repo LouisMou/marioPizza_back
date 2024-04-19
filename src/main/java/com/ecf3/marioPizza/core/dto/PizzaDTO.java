@@ -4,6 +4,9 @@
 package com.ecf3.marioPizza.core.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
+
+import com.ecf3.marioPizza.core.domain.Order;
 
 /**
  *
@@ -36,10 +39,29 @@ public class PizzaDTO {
 	private BigDecimal price;
 
 	/**
+	 * pizzaDTO orders.
+	 */
+	private List<Order> orders;
+
+	/**
 	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
+	}
+
+	/**
+	 * @return the orders
+	 */
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	/**
+	 * @param orders the orders to set
+	 */
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	/**
