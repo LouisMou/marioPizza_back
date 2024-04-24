@@ -4,7 +4,7 @@
 package com.ecf3.marioPizza.core.dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.ecf3.marioPizza.core.domain.OrderLine;
@@ -23,7 +23,7 @@ public class OrderDTO {
 	/**
 	 * 
 	 */
-	private Date date;
+	private LocalDate date;
 
 	/**
 	 * 
@@ -69,15 +69,15 @@ public class OrderDTO {
 	/**
 	 * @return the date
 	 */
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
 	/**
-	 * @param date the date to set
+	 * @param localDate the date to set
 	 */
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(LocalDate localDate) {
+		this.date = localDate;
 	}
 
 	/**
